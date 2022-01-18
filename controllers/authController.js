@@ -1,7 +1,7 @@
 const Joi = require('joi')
 const {generateToken, verifyToken} = require('../utils/jwt') //token
 const { hashPassword, comparePassword} = require('../utils/bcrypt') //hash password
-// const {<nama models class>} = require('../models')
+const {} = require('../models')
 const errorHandler = require('../utils/error-handler') //handling error
 
 
@@ -38,7 +38,7 @@ module.exports = {
        })
      }
      */
-    hashPassword(password) //password hash
+    hashPassword(body.password) //password hash
     /* create to table <nama table>
     const admin   = await <nama table>.create({
       firstName : body.firstName,
@@ -114,5 +114,4 @@ module.exports = {
       errorHandler(res,error)
     }
   }
- 
-}
+ }
