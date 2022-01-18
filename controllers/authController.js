@@ -1,21 +1,35 @@
 const joi = require("joi");
-const { User } = require("../models");
-const { hashPassword, comparePassword } = require("../utils/bcrypt");
-const { generateToken } = require("../utils/jwt");
+const {
+  User
+} = require("../models");
+const {
+  hashPassword,
+  comparePassword
+} = require("../utils/bcrypt");
+const {
+  generateToken
+} = require("../utils/jwt");
 const errorHandler = require("../utils/error-handler");
 
 module.exports = {
   register: async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const {
+      firstName,
+      lastName,
+      email,
+      password
+    } = req.body;
     try {
       const schema = joi.object({
         firstName: joi.string().required(),
         lastName: joi.string().required(),
         email: joi.string().email().required(),
-        password: joi.string().required(),
+        password: joi.string().min(6).required(),
       });
 
-      const { error } = schema.validate(req.body);
+      const {
+        error
+      } = schema.validate(req.body);
       if (error) {
         return res.status(400).json({
           message: error.message,
@@ -24,7 +38,9 @@ module.exports = {
       }
 
       const check = await User.findOne({
-        where: { email },
+        where: {
+          email
+        },
       });
 
       if (check) {
@@ -45,15 +61,15 @@ module.exports = {
 
       const token = generateToken({
         id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
+        email: user.email
       });
 
       res.status(200).json({
         message: "Register Success",
         status: "OK",
-        result: { token },
+        result: {
+          token
+        },
       });
     } catch (error) {
       errorHandler(res, error);
@@ -61,14 +77,19 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    const { email, password } = req.body;
+    const {
+      email,
+      password
+    } = req.body;
     try {
       const schema = joi.object({
         email: joi.string().email().required(),
         password: joi.string().required(),
       });
 
-      const { error } = schema.validate(req.body);
+      const {
+        error
+      } = schema.validate(req.body);
       if (error) {
         return res.status(400).json({
           message: error.message,
@@ -77,12 +98,14 @@ module.exports = {
       }
 
       const user = await User.findOne({
-        where: { email },
+        where: {
+          email
+        },
       });
 
       if (!user) {
         return res.status(401).json({
-          message: "Username or Password Incorrect",
+          message: "Incorrect Username or Password",
           status: "Unauthorized",
         });
       }
@@ -90,7 +113,7 @@ module.exports = {
       const checkValid = comparePassword(password, user.password);
       if (!checkValid) {
         return res.status(401).json({
-          message: "Username or Password Incorrect",
+          message: "Incorrect Username or Password",
           status: "Unauthorized",
         });
       }
@@ -103,7 +126,9 @@ module.exports = {
       res.status(200).json({
         message: "Login Success",
         status: "OK",
-        result: { token },
+        result: {
+          token
+        },
       });
     } catch (error) {
       errorHandler(res, error);
