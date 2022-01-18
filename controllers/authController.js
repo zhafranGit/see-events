@@ -1,13 +1,35 @@
 const joi = require("joi");
+<<<<<<< HEAD
 const { User} = require("../models");
 const { hashPassword, comparePassword} = require("../utils/bcrypt");
 const { generateToken } = require("../utils/jwt");
 
+=======
+const {
+  User
+} = require("../models");
+const {
+  hashPassword,
+  comparePassword
+} = require("../utils/bcrypt");
+const {
+  generateToken
+} = require("../utils/jwt");
+>>>>>>> eebb2096331fd89d617bae4a7b604538d2f58e7b
 const errorHandler = require("../utils/error-handler");
 
 module.exports = {
   register: async (req, res) => {
+<<<<<<< HEAD
     const { firstName, lastName,email, password } = req.body;
+=======
+    const {
+      firstName,
+      lastName,
+      email,
+      password
+    } = req.body;
+>>>>>>> eebb2096331fd89d617bae4a7b604538d2f58e7b
     try {
       const schema = joi.object({
         firstName: joi.string().required(),
@@ -16,7 +38,13 @@ module.exports = {
         password: joi.string().min(6).required(),
       });
 
+<<<<<<< HEAD
       const {       error      } = schema.validate(req.body);
+=======
+      const {
+        error
+      } = schema.validate(req.body);
+>>>>>>> eebb2096331fd89d617bae4a7b604538d2f58e7b
       if (error) {
         return res.status(400).json({
           message: error.message,
