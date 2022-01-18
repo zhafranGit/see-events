@@ -22,7 +22,7 @@ module.exports = {
       
       //jika tidak ada data yg bisa ditampilkan
       if(events.length ==0){
-        return res.status(400).json({
+        return res.status(404).json({
           status : "Failed",
           message : "No data found, database is empty",
           result : {}
