@@ -1,33 +1,30 @@
 const Joi = require('joi')
 const errorHandler = require('../utils/error-handler') //handling error
-const {} = require('../models') // mengambil model
+const {Event,Category} = require('../models') // mengambil model
 
 module.exports = {
   getEvents : async (req,res)=> {
-    
-    try {
-      /* find all database , limit 8
-      const events = await Laptop.findAll({
+     try {
+      //  find all database , limit 8
+      const events = await Event.findAll({
         limit :8,
         include : [ // ditambahkan dari model lain
           {
-            model : <nama models>,
-            as : "<models as>",
-            attributes : {
-              exclude : ["createdAt","updatedAt"]  // yg tidak ditampilkan
-            }
+            model : Category,
+            as : "category",
           },
         ],
         attributes : {  
-          exclude : ["brandId","id","createdAt","updatedAt"] // yg dikeluarkan  
+          exclude : ["id","createdAt","updatedAt"] // yg dikeluarkan  
         }
       }) 
+  
       
       //jika tidak ada data yg bisa ditampilkan
-      if(events.length ==0)){
+      if(events.length ==0){
         return res.status(400).json({
           status : "Failed",
-          message : "No data found, database is empy",
+          message : "No data found, database is empty",
           result : {}
         })
       }
@@ -37,19 +34,18 @@ module.exports = {
         message : "Successfully retrieve the data",
         result : events
       })
-     */
+     
     } catch (error) {
       errorHandler (res,error)
     }
   },
   getEventDetail : async  (req,res) => {
-    const {eventId : id} = req.params
+    const {eventId :id} = req.params
     try {
-      /* find data by eventId
-      const event = await (models).findOne({
+      // find data by event
+      const event = await Event.findOne({
           where : {
-            id,
-          }
+            id           }
       })
 
       //jika data tidak ada
@@ -60,7 +56,7 @@ module.exports = {
           result :{}
         })
       }
-      */
+     
       return res.status(200).json({
         status : "Success",
         message : "Successfully retrieve the data",
