@@ -1,5 +1,4 @@
 const Joi = require('joi')
-const {} = require('.')
 const errorHandler = require('../utils/error-handler') //handling error
 const {} = require('../models') // mengambil model
 
