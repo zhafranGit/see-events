@@ -14,8 +14,8 @@ module.exports = {
     await queryInterface.bulkInsert("comments",
       [
         {
-          eventId: 2,
-          userId: 1,
+          eventId: 1,
+          userId: 2,
           commentDesc: "mantap bang lanjutkan"
         },
         {
