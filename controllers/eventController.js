@@ -4,21 +4,38 @@ const {
   Event,
   Category
 } = require('../models') // mengambil model
+const {
+  Op,
+  col
+} = require("sequelize")
+const moment = require('moment')
 
 module.exports = {
   getEvents: async (req, res) => {
+    let {
+      limit
+    } = req.query;
     try {
-      //  find all database , limit 8
+      let limitQuery
+      if (limit) {
+        limitQuery = limit
+      } else {
+        limitQuery = 8
+      }
+      console.log(limitQuery)
       const events = await Event.findAll({
-        limit: 8,
+        limit: limitQuery,
         include: [ // ditambahkan dari model lain
           {
             model: Category,
             as: "category",
+            attributes: {
+              exclude: ["id", "createdAt", "updatedAt"],
+            }
           },
         ],
         attributes: {
-          exclude: ["id", "createdAt", "updatedAt"] // yg dikeluarkan  
+          exclude: ["createdAt", "updatedAt"],
         }
       })
 
@@ -57,7 +74,7 @@ module.exports = {
       //jika data tidak ada
       if (!event) {
         return res.status(404).json({
-          status: "Data Not Found",
+          status: "Not Found",
           message: "Cannot find an event with id " + id,
           result: {}
         })
