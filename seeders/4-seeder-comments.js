@@ -4,24 +4,24 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert("comments",
       [{
-          eventId: 21,
+          eventId: 1,
           userId: 1,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
         {
-          eventId: 21,
+          eventId: 1,
           userId: 2,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
         {
-          eventId: 23,
+          eventId: 1,
           userId: 1,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
         {
-          eventId: 23,
+          eventId: 1,
           userId: 2,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
       ])
   },

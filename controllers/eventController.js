@@ -2,7 +2,9 @@ const Joi = require('joi') //use joi validation npm
 const errorHandler = require('../utils/error-handler') //error handler
 const {
   Event,
-  Category
+  Category,
+  Comment,
+  User
 } = require('../models') // use models
 const {
   Op
@@ -156,9 +158,13 @@ module.exports = {
         where: {
           id
         },
+        include:[{
+          model: Comment,
+          as: "comment"
+        }],
         attributes: {
           exclude: ["createdAt", "updatedAt"]
-        }
+        },
       })
       //if event is not found
       if (!event) {
@@ -175,7 +181,11 @@ module.exports = {
         result: event
       })
     } catch (error) {
+      console.log(error)
       errorHandler(res, error)
     }
+  },
+  getComments: async (req, res) => {
+
   }
 }
