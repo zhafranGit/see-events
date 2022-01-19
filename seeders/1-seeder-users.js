@@ -1,25 +1,16 @@
 'use strict';
-const { hashPassword } = require('../utils/bcrypt')
+const {
+  hashPassword
+} = require('../utils/bcrypt')
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-
     await queryInterface.bulkInsert("users",
-      [
-        {
+      [{
           firstName: "avan",
           lastName: "the love",
-          email: "avanthelove@email.co",
-          password: hashPassword("avan"),
+          email: "avanthelove@email.com",
+          password: hashPassword("avantek"),
         },
         {
           firstName: "tiga",
@@ -29,7 +20,7 @@ module.exports = {
         }
       ])
   },
-  
+
   async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
