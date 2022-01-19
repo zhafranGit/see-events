@@ -36,7 +36,7 @@ module.exports = {
           image: "https://kizisstudio.com/wp-content/uploads/2020/02/maxresdefault-1.jpg"
         },
         {
-          userId: 3,
+          userId: 2,
           categoryId: 3,
           title: "Apple Developer Conference 2022",
           description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla posuere sollicitudin aliquam ultrices. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam. Urna duis convallis convallis tellus. Consectetur a erat nam at. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor. Vitae justo eget magna fermentum iaculis eu non diam. Sit amet nisl suscipit adipiscing bibendum est ultricies integer. Diam donec adipiscing tristique risus. Nisl rhoncus mattis rhoncus urna. Faucibus vitae aliquet nec ullamcorper. Parturient montes nascetur ridiculus mus. Habitant morbi tristique senectus et netus et malesuada. Nulla facilisi cras fermentum odio eu feugiat pretium. Tortor vitae purus faucibus ornare suspendisse. Et malesuada fames ac turpis egestas integer eget aliquet nibh. Est placerat in egestas erat imperdiet sed euismod. Auctor elit sed vulputate mi sit amet.`,
