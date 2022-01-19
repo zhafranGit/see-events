@@ -16,7 +16,7 @@ module.exports = {
           categoryId: 6,
           title: "Tahlilan",
           description: `Tahlilan adalah suatu kebudayaan yang dilakukan oleh kalangan orang muslim. Hal ini dilakukan ketika acara-acara tertentu, misal pra maupun pasca acara ceramah, khitan, maupun lainnya. Di kota-kota besar, acara ini sering dilakukan bersama keluarga besar. Di dalam desa, acara ini dilaksakan bersama orang kampung. Hal ini dikarenakan orang-orang di kota lebih memilih menyelesaikan pekerjaan dan aktivitas lainnya. Meski perkerjaan tersebut tidak di malam hari, namun kebanyakan tahlilan dilakukan pada malam hari dan jam malam adalah di mana orang pekerja melaksakan istirahat mengumpulkan tenaga untuk esok harinya.  Tahlilan adalah salah satu bentuk dari siraman rohani dikarenakan dapat menenangkan jiwa dan hati. Biasanya tahlilan ini adalah wujud syukur atas nikmat yang diberikan oleh Allah SWT. Beryukkur dengan cara berbagi dengan sesame umat muslim lainnya. Apakah anda juga seperti itu?. `,
-          eventDate: '2022-01-19 19:30:00',
+          eventDate: '2022-01-20 19:30:00',
           image: "https://i.ytimg.com/vi/lmO8QuUbUi4/maxresdefault.jpg"
         },
         {
@@ -24,7 +24,7 @@ module.exports = {
           categoryId: 2,
           title: "Photography Trickshot",
           description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla posuere sollicitudin aliquam ultrices. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam. Urna duis convallis convallis tellus. Consectetur a erat nam at. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor. Vitae justo eget magna fermentum iaculis eu non diam. Sit amet nisl suscipit adipiscing bibendum est ultricies integer. Diam donec adipiscing tristique risus. Nisl rhoncus mattis rhoncus urna. Faucibus vitae aliquet nec ullamcorper. Parturient montes nascetur ridiculus mus. Habitant morbi tristique senectus et netus et malesuada. Nulla facilisi cras fermentum odio eu feugiat pretium. Tortor vitae purus faucibus ornare suspendisse. Et malesuada fames ac turpis egestas integer eget aliquet nibh. Est placerat in egestas erat imperdiet sed euismod. Auctor elit sed vulputate mi sit amet.`,
-          eventDate: '2022-01-22 14:00:00',
+          eventDate: '2022-01-24 00:00:00',
           image: "https://www.thephoblographer.com/wp-content/uploads/2019/10/NczAHI3xxowhd.jpg"
         },
         {
@@ -70,9 +70,9 @@ module.exports = {
         {
           userId: 1,
           categoryId: 7,
-          title: "Djakarta Warehouse Projects 2022",
+          title: "Djakarta Warehouse Projects 2021",
           description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla posuere sollicitudin aliquam ultrices. Suspendisse interdum consectetur libero id faucibus nisl tincidunt eget nullam. Urna duis convallis convallis tellus. Consectetur a erat nam at. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor. Vitae justo eget magna fermentum iaculis eu non diam. Sit amet nisl suscipit adipiscing bibendum est ultricies integer. Diam donec adipiscing tristique risus. Nisl rhoncus mattis rhoncus urna. Faucibus vitae aliquet nec ullamcorper. Parturient montes nascetur ridiculus mus. Habitant morbi tristique senectus et netus et malesuada. Nulla facilisi cras fermentum odio eu feugiat pretium. Tortor vitae purus faucibus ornare suspendisse. Et malesuada fames ac turpis egestas integer eget aliquet nibh. Est placerat in egestas erat imperdiet sed euismod. Auctor elit sed vulputate mi sit amet.`,
-          eventDate: '2022-12-23 18:00:00',
+          eventDate: '2021-12-23 18:00:00',
           image: "https://i.ytimg.com/vi/kXF4UOQdwgw/maxresdefault.jpg"
         },
         {
