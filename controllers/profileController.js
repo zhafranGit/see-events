@@ -1,13 +1,23 @@
 const errorHandler = require('../utils/error-handler') //handling error
-const { Profile } = require('../models'); // mengambil model
+const {
+    Profile
+} = require('../models'); // mengambil model
 const Joi = require('joi');
 
 module.exports = {
     editProfile: async (req, res) => {
-        const { profileId } = req.params
+        const {
+            profileId
+        } = req.params
         const file = req.file;
         try {
-            const { error } = Joi.object({ image: Joi.string() }).validate({ image: file.path })
+            const {
+                error
+            } = Joi.object({
+                image: Joi.string()
+            }).validate({
+                image: file.path
+            })
             if (error) {
                 return res.status(400).json({
                     status: "Bad Request",
@@ -16,7 +26,9 @@ module.exports = {
                 })
             }
 
-            const update = await Profile.update({ image: file.path }, {
+            const update = await Profile.update({
+                image: file.path
+            }, {
                 where: {
                     id: profileId
                 }
@@ -40,8 +52,10 @@ module.exports = {
             errorHandler(res, error);
         }
     },
-    getProfile: async (req,res) => {
-        const { profileId: id } = req.params
+    getProfile: async (req, res) => {
+        const {
+            profileId: id
+        } = req.params
         try {
             const profile = await Profile.findByPk(id);
             if (!profile) {
