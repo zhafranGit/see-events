@@ -9,6 +9,7 @@ const {
 const {
   generateToken
 } = require("../utils/jwt");
+
 const errorHandler = require("../utils/error-handler");
 
 module.exports = {
