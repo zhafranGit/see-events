@@ -12,17 +12,17 @@ const moment = require('moment')
 
 module.exports = {
   getEvents: async (req, res) => {
-    let {
+    const {
       limit
-    } = req.query;
+    } = req.query
     try {
       let limitQuery
       if (limit) {
-        limitQuery = limit
+        limitQuery = Number(limit)
       } else {
         limitQuery = 8
       }
-      console.log(limitQuery)
+
       const events = await Event.findAll({
         limit: limitQuery,
         include: [ // ditambahkan dari model lain
@@ -68,6 +68,9 @@ module.exports = {
       const event = await Event.findOne({
         where: {
           id
+        },
+        attributes: {
+          exclude: ["createdAt", "updatedAt"]
         }
       })
 
