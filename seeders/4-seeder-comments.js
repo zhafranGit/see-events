@@ -10,17 +10,17 @@ module.exports = {
           commentDesc: "mantap bang lanjutkan"
         },
         {
-          eventId: 21,
+          eventId: 1,
           userId: 2,
           commentDesc: "mantap bang lanjutkan"
         },
         {
-          eventId: 23,
+          eventId: 2,
           userId: 1,
           commentDesc: "mantap bang lanjutkan"
         },
         {
-          eventId: 23,
+          eventId: 2,
           userId: 2,
           commentDesc: "mantap bang lanjutkan"
         },
