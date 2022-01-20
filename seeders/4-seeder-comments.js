@@ -7,22 +7,22 @@ module.exports = {
         {
           eventId: 1,
           userId: 2,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
         {
           eventId: 1,
           userId: 2,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
         {
           eventId: 2,
           userId: 1,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
         {
           eventId: 2,
           userId: 2,
-          commentDesc: "mantap bang lanjutkan"
+          comment: "mantap bang lanjutkan"
         },
       ])
   },
