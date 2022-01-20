@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("events",
+    await queryInterface.bulkInsert("Events",
       [{
           userId: 1,
           categoryId: 3,

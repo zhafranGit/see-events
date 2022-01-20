@@ -19,7 +19,7 @@ module.exports = {
         onUpdate: "CASCADE",
       },
       image: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
       },
       createdAt: {
