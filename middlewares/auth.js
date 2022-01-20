@@ -1,45 +1,41 @@
-const jwt = require("jsonwebtoken");
-const catchHandler = require("../utils/catch-handler");
-const {
-    Users
-} = require("../models");
+const { User } = require('../models')
+const { verifyToken } = require('../utils/jwt')
+const errorHandler = require('../utils/error-handler')
 
 module.exports = {
     isLogin: async (req, res, next) => {
         try {
-            // get bearer token from authorization header
-            let token = req.header("Authorization");
-            // check token exist
+            let token = req.header("Authorization")
+            // cek token
             if (!token) {
                 return res.status(401).json({
+                    msg: "TokenNya Mana Woi",
                     status: "Unauthorized",
-                    message: "No token detected",
-                    result: {},
-                });
+                })
             }
-            // delete bearerToken
-            token = token.replace("Bearer ", "");
-            // decode token by jwt
-            const decoded = jwt.verify(token, process.env.SECRET_TOKEN);
-            // check user from db
-            const user = await Users.findByPk(decoded.id);
+            const decoded = verifyToken(token, process.env.JWT_KEY)
+            // // cek verifyToken
+            // if (!decoded) {
+            //     return res.status(401).json({
+            //         msg: "token tidak sama",
+            //         status: "Unauthorized",
+            //     })
+            // }
+            const user = await User.findByPk(decoded.id)
             if (!user) {
                 return res.status(401).json({
-                    status: "Unauhtorized",
-                    message: "User not found",
-                });
+                    msg: "User Tidak Ada",
+                    status: "Unauthorized",
+                })
             }
-            // send to next controller
-            req.user = {
-                id: user.id,
-                email: user.email,
-                isAdmin: user.isAdmin,
-            };
-            next();
-        } catch (error) {
-            return res.status(401).json({
-                catchHandler(res, error)
-            });
+            res.status(200).json({
+                msg: "Successfully Login",
+                status: "Success",
+            })
+            next()
+        }
+        catch (error) {
+            errorHandler(res, error)
         }
     }
 }
