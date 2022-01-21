@@ -28,17 +28,19 @@ module.exports = {
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
-      commentDesc: {
+      comment: {
         allowNull: false,
         type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()")
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()")
       },
     });
   },
