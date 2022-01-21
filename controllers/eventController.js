@@ -114,7 +114,7 @@ module.exports = {
       //get events from database
       const events = await Event.findAll({
         limit: limitQuery,
-        offset: [(page - 1) * limitQuery],
+        // offset: [(page - 1) * limitQuery],
         order: [sort],
         include: [ //join table
           {
@@ -164,10 +164,6 @@ module.exports = {
         where: {
           id
         },
-        include:[{
-          model: Comment,
-          as: "comment"
-        }],
         attributes: {
           exclude: ["createdAt", "updatedAt"]
         },
@@ -190,8 +186,5 @@ module.exports = {
       console.log(error)
       errorHandler(res, error)
     }
-  },
-  getComments: async (req, res) => {
-
   }
 }
