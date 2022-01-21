@@ -1,4 +1,4 @@
-const Joi = require('joi') //use joi validation npm
+const Joi = require('joi').extend(require("@joi/date")) //use joi validation npm
 const errorHandler = require('../utils/error-handler') //error handler
 const {
   Event,
@@ -13,6 +13,7 @@ module.exports = {
   getEvents: async (req, res) => {
     const {
       limit,
+      page,
       category,
       order,
       date,
@@ -26,6 +27,10 @@ module.exports = {
         limitQuery = Number(limit)
       } else {
         limitQuery = 8 //default limit 8
+      }
+      //set paginations limit
+      if (!page) {
+        page - 1
       }
       //check query sort
       let sort;
@@ -43,17 +48,17 @@ module.exports = {
       let dateQuery, start, end;
       switch (date) {
         case "today":
-          start = moment().startOf("day").toDate();
-          end = moment().endOf("day").toDate();
+          start = moment().tz("UTC").startOf("day").toDate();
+          end = moment().tz("UTC").endOf("day").toDate();
           dateQuery = {
             eventDate: {
               [Op.between]: [start, end]
             }
           }
           break;
-        case "tomorrow": //day + 1
-          start = moment().add(1, "day").startOf("day").toDate();
-          end = moment().add(1, "day").endOf("day").add(1, "day").toDate();
+        case "tomorrow": //today + 1
+          start = moment().tz("UTC").add(1, "day").startOf("day").toDate();
+          end = moment().tz("UTC").add(1, "day").endOf("day").toDate();
           dateQuery = {
             eventDate: {
               [Op.between]: [start, end]
@@ -61,8 +66,8 @@ module.exports = {
           }
           break;
         case "week": //starts from monday
-          start = moment().startOf("week").add(1, "day").toDate();
-          end = moment().endOf("week").add(1, "day").toDate();
+          start = moment().tz("UTC").startOf("week").add(1, "day").toDate();
+          end = moment().tz("UTC").endOf("week").add(1, "day").toDate();
           dateQuery = {
             eventDate: {
               [Op.between]: [start, end]
@@ -70,8 +75,8 @@ module.exports = {
           }
           break;
         case "month": //starts from date 1 00:00 PM
-          start = moment().startOf("month").toDate();
-          end = moment().endOf("month").toDate();
+          start = moment().tz("UTC").startOf("month").toDate();
+          end = moment().tz("UTC").endOf("month").toDate();
           dateQuery = {
             eventDate: {
               [Op.between]: [start, end]
@@ -79,8 +84,8 @@ module.exports = {
           }
           break;
         case "year":
-          start = moment().startOf("year").toDate();
-          end = moment().endOf("year").toDate();
+          start = moment().tz("UTC").startOf("year").toDate();
+          end = moment().tz("UTC").endOf("year").toDate();
           dateQuery = {
             eventDate: {
               [Op.between]: [start, end]
@@ -107,6 +112,7 @@ module.exports = {
       //get events from database
       const events = await Event.findAll({
         limit: limitQuery,
+        offset: [(page - 1) * limitQuery],
         order: [sort],
         include: [ //join table
           {

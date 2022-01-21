@@ -18,8 +18,10 @@
   },
   "homepage": "https://gitlab.com/binarxglints_batch16/mini-project/team-a/be_teama#readme",
   "dependencies": {
+    "@joi/date": "^2.1.0",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.28.1",
+    "date": "^1.0.2",
     "dotenv": "^14.1.0",
     "express": "^4.17.2",
     "joi": "^17.5.0",
