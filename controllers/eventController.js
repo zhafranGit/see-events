@@ -1,18 +1,11 @@
 const Joi = require('joi') //use joi validation npm
 const errorHandler = require('../utils/error-handler') //error handler
-const {
-  Event,
-  Category,
-  Comment,
-  User
-} = require('../models') // use models
-const {
-  Op
-} = require("sequelize") //use Op from Sequelize
+const { Event, Category, Comment, User } = require('../models') // use models
+const { Op } = require("sequelize") //use Op from Sequelize
 const moment = require('moment') //use moment npm
 
 module.exports = {
-  getEvents: async (req, res) => {
+  getEvents: async (req, res) => { //! events
     const {
       limit,
       category,
@@ -148,7 +141,7 @@ module.exports = {
       errorHandler(res, error)
     }
   },
-  getEventDetail: async (req, res) => {
+  getEventDetail: async (req, res) => { //! event detail
     const {
       eventId: id
     } = req.params //get params
@@ -158,7 +151,7 @@ module.exports = {
         where: {
           id
         },
-        include:[{
+        include: [{
           model: Comment,
           as: "comment"
         }],

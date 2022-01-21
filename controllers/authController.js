@@ -1,15 +1,8 @@
 const joi = require("joi"); //use joi validation npm
 const errorHandler = require("../utils/error-handler"); //error handler
-const {
-  User
-} = require("../models"); //use models
-const {
-  hashPassword,
-  comparePassword
-} = require("../utils/bcrypt"); //use bcrypt from utils
-const {
-  generateToken
-} = require("../utils/jwt"); //use jwt from utils
+const { User } = require("../models"); //use models
+const { hashPassword, comparePassword } = require("../utils/bcrypt"); //use bcrypt from utils
+const { generateToken } = require("../utils/jwt"); //use jwt from utils
 
 module.exports = {
   register: async (req, res) => {

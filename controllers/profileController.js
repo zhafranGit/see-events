@@ -1,19 +1,13 @@
 const errorHandler = require('../utils/error-handler') //handling error
-const {
-    Profile
-} = require('../models'); // mengambil model
+const { Profile } = require('../models'); // mengambil model
 const Joi = require('joi');
 
 module.exports = {
     editProfile: async (req, res) => {
-        const {
-            profileId
-        } = req.params
+        const { profileId } = req.params
         const file = req.file;
         try {
-            const {
-                error
-            } = Joi.object({
+            const { error } = Joi.object({
                 image: Joi.string()
             }).validate({
                 image: file.path
