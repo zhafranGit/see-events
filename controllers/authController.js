@@ -6,12 +6,7 @@ const { generateToken } = require("../utils/jwt"); //use jwt from utils
 
 module.exports = {
   register: async (req, res) => {
-    const {
-      firstName,
-      lastName,
-      email,
-      password
-    } = req.body; //get data from json body
+    const { firstName, lastName, email, password } = req.body; //get data from json body
     try {
       //create Joi schema
       const schema = joi.object({
@@ -21,9 +16,7 @@ module.exports = {
         password: joi.string().min(6).required(),
       });
       //check error schema
-      const {
-        error
-      } = schema.validate(req.body);
+      const { error } = schema.validate(req.body);
       if (error) {
         return res.status(400).json({
           status: "Bad Request",
@@ -33,7 +26,7 @@ module.exports = {
       //check user exist by email
       const check = await User.findOne({
         where: {
-          email
+          email,
         },
       });
       //response email is already in the database
@@ -51,17 +44,22 @@ module.exports = {
         email,
         password: passwordHashed,
       });
+
+      await Profile.create({
+        userId: user.id,
+        image: null
+      });
       //generate token with payload id and email
       const token = generateToken({
         id: user.id,
-        email: user.email
+        email: user.email,
       });
       //response success
       res.status(200).json({
         status: "OK",
         message: "Register Success",
         result: {
-          token
+          token,
         },
       });
     } catch (error) {
@@ -70,10 +68,7 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    const {
-      email,
-      password
-    } = req.body; //get data from json body
+    const { email, password } = req.body; //get data from json body
     try {
       //create Joi schema
       const schema = joi.object({
@@ -81,9 +76,7 @@ module.exports = {
         password: joi.string().required(),
       });
       //check error schema
-      const {
-        error
-      } = schema.validate(req.body);
+      const { error } = schema.validate(req.body);
       //check error schema
       if (error) {
         return res.status(400).json({
@@ -94,7 +87,7 @@ module.exports = {
       //get user from database by email
       const user = await User.findOne({
         where: {
-          email
+          email,
         },
       });
       //check login validation
@@ -115,7 +108,7 @@ module.exports = {
         status: "OK",
         message: "Login Success",
         result: {
-          token
+          token,
         },
       });
     } catch (error) {

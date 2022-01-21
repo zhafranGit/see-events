@@ -1,5 +1,10 @@
 const errorHandler = require('../utils/error-handler') //error handler
-const { Comment, Event } = require('../models') // use models
+const {
+    Comment,
+} = require('../models') // use models
+const {
+    verifyToken
+} = require("../utils/jwt")
 
 
 module.exports = {
