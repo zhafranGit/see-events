@@ -8,6 +8,6 @@ const {
     isLogin
 } = require("../middlewares/auth")
 
-router.get("/:eventId", isLogin, getComments)
+//router.get("/:eventId", getComments);
 router.post("/:eventId", isLogin, createComment)
 module.exports = router
