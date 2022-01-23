@@ -8,10 +8,11 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/v1', routes);
 
-app.get('/', (req, res) => {
-
-    res.send('hello from simple server :)')
-
+app.get("/", (req, res) => {
+    res.status(200).json({
+        status: "see-events app is running good",
+        time: new Date().toLocaleString()
+    })
 })
 
 app.listen(port, () => {
