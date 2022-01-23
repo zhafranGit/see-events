@@ -1,2 +1,2 @@
-release: npm run heroku-release;
-web : node app.js
+release:npm run heroku-release;
+web:node app.js
